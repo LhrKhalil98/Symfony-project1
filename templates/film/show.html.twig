@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Film{% endblock %}
+
+{% block body %}
+<div class="row d-flex no-gutters">
+	    			<div class="col-lg-8 px-md-5 py-5">
+	    				<div class="row">
+	    					<h1 class="mb-3">{{film.getTitre()}}</h1>
+		            <p>{{film.getDescription()}}</p>
+		            <p>
+		              <img src="../images/{{film.urlImage }}" alt="" class="img-fluid">
+		            </p>
+		            
+
+
+			    		</div><!-- END-->
+			    	</div>
+	    			<div class="col-lg-4 sidebar ftco-animate bg-light pt-5">
+	      
+	            <div class="sidebar-box ftco-animate">
+	            	<h3 class="sidebar-heading">Acteurs</h3>
+	              <ul class="categories">
+                  {% for acteur in acteurs %}
+                      
+                
+	                <li><a href="#">{{acteur.getNomPrenom}} </a></li>
+	                {% endfor %}
+	              </ul>
+	            </div>
+
+	       
+
+
+					
+
+	            <div class="sidebar-box ftco-animate">
+	            	<h3 class="sidebar-heading">Informations </h3>
+	              <ul class="categories">
+	              	<li><a href="#">Date Sortie <span>{{ film.dateSortie ? film.dateSortie|date('Y-m-d') : '' }}</span></a></li>
+	                <li><a href="#"> Duree <span>{{ film.duree }}</span></a></li>
+	                <li><a href="#">Langue <span>{{film.langue.getLangue()}}</span></a></li>
+	                <li><a href="#"> Genre <span>{{film.genre.getGenre}}</span></a></li>
+	                 
+	              </ul>
+	            </div>
+
+
+	           
+	          </div><!-- END COL -->
+	    		</div>
+
+{% endblock %}

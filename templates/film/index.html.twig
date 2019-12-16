@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Film {% endblock %}
+
+{% block header  %}
+
+            <div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="js-fullheight img"  >
+			<h1 id="colorlib-logo" class="mb-4"><a href="index.html">Admin</a></h1>
+			<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+					<li ><a href="{{ path('users')}}">Clients et Admins </a></li>
+					<li><a href="{{ path('films')}}">Films</a></li>
+					<li><a href="{{ path('acteurs')}}">Acteurs</a></li>
+					<li><a href="{{ path('abonnements')}}">Abonnements</a></li>
+					<li><a href="{{ path('app_logout')}}">Logout  </a></li>
+				</ul>
+			</nav>
+
+		
+		</aside>
+{% endblock %}
+{% block body %}
+    <h1>Films </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Date_sortie</th>
+                <th>Duree</th>
+                
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <td>{{ film.id }}</td>
+                <td>{{ film.titre }}</td>
+                <td>{{ film.dateSortie ? film.dateSortie|date('Y-m-d') : '' }}</td>
+                <td>{{ film.duree }}</td>
+                
+                <td>
+<form method="post" action="{{ path('film_delete', {'id': film.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ film.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>
+       <a href="{{ path('film_edit', {'id': film.id}) }}"><button type="button" class="btn btn-info" >Modifier  </button></a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('film_new') }}"><button type="button" class="btn btn-primary" >Ajouter Film </button></a>
+{% endblock %}

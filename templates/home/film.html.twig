@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+	    			<div class="row no-gutters">
+	    		
+{% for item in films %}
+    	<div class="col-md-4 d-flex">
+							<div class="blog-entry ftco-animate">
+								<a href="single.html" class="img" style="background-image: url(../images/{{ item.urlImage }});"></a>
+								<div class="text p-4">
+		              <h3 class="mb-2"><a href="single.html">{{item.getTitre()}}</a></h3>
+		              <div class="meta-wrap">
+										<p class="meta">
+		              		<span><i class="icon-calendar mr-2"></i>{{ item.dateSortie ? item.dateSortie|date('Y-m-d') : '' }}</span>
+		              		<span><a href="single.html"><i class="icon-folder-o mr-2"></i>{{item.genre.getGenre}}</a></span>
+		              		<span><i class="icon-comment2 mr-2"></i>{{item.langue.getLangue()}}</span>
+		              	</p>
+	              	</div>
+		              <p class="mb-4">{{item.getDescription()}}</p>
+		              <p><a href="{{ path('film_show', {'id': item.id}) }}" class="btn-custom">Watch Now <span class="ion-ios-arrow-forward"></span></a></p>
+		            </div>
+							</div>
+						</div>
+{% endfor %}
+					
+	    		</div>
+	    	
+{% endblock %}

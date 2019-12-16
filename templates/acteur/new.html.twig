@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Acteur{% endblock %}
+{% block header  %}
+
+            <div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="js-fullheight img"  >
+			<h1 id="colorlib-logo" class="mb-4"><a href="index.html">Admin</a></h1>
+			<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+					<li ><a href="{{ path('users')}}">Clients et Admins </a></li>
+					<li><a href="{{ path('films')}}">Films</a></li>
+					<li><a href="{{ path('acteurs')}}">Acteurs</a></li>
+					<li><a href="{{ path('abonnements')}}">Abonnements</a></li>
+					<li><a href="{{ path('app_logout')}}">Logout  </a></li>
+				</ul>
+			</nav>
+
+		
+		</aside>
+{% endblock %}
+{% block body %}
+    <h1>Ajouter nouveau Acteurs  </h1>
+<div class="form ">   
+    {{ form_start(form) }}
+
+  <div class="row">
+
+    
+   ~~ <div class="form-group">{{ form_row(form.nom_prenom) }}<span> </div> 
+     <div class="form-group">{{ form_row(form.nationalite) }}</div>
+    <div class="form-group"> {{ form_row(form.date_naissance) }}</div>
+      </div>
+   <button type="submit" class="btn btn-success">Ajouter</button>
+     {{ form_end(form) }}
+
+          </div>
+
+      
+ 
+        </div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Film{% endblock %}
+
+{% block header  %}
+
+            <div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="js-fullheight img"  >
+			<h1 id="colorlib-logo" class="mb-4"><a href="index.html">Admin</a></h1>
+			<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+					<li ><a href="{{ path('users')}}">Clients et Admins </a></li>
+					<li><a href="{{ path('films')}}">Films</a></li>
+					<li><a href="{{ path('acteurs')}}">Acteurs</a></li>
+					<li><a href="{{ path('abonnements')}}">Abonnements</a></li>
+					<li><a href="{{ path('app_logout')}}">Logout  </a></li>
+				</ul>
+			</nav>
+
+		
+		</aside>
+{% endblock %}
+{% block body %}
+    <h1>Ajouter Un Nouveau film &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; </h1> 
+
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-primary">Ajouter </button>
+{{ form_end(form) }}
+
+
+{% endblock %}
